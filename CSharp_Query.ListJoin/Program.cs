@@ -15,9 +15,9 @@ namespace CSharp_Query.ListJoin
             {
                 var qry = listInput.GroupJoin(
                   allCountries,
-                  foo => foo,
-                  bar => bar.Code,
-                  (f, bs) => new Country(bs.SingleOrDefault() == null ? "" : bs.SingleOrDefault().Name, f, bs.SingleOrDefault() == null ? "" : bs.SingleOrDefault().Code)).ToList();
+                  x => x,
+                  y => y.Code,
+                  (a, b) => new Country(b.SingleOrDefault() == null ? "" : b.SingleOrDefault().Name, a, b.SingleOrDefault() == null ? "" : b.SingleOrDefault().Code)).ToList<Country>();
 
                 output.Add(new CatalogueCountryRestriction { CatalogueId = i.ToString(), CountryRestrinctions = qry });
             }
